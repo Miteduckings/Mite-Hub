@@ -6,6 +6,7 @@ local localplayer = Players.LocalPlayer
 local GuiService = game:GetService("GuiService")
 local Light = game:GetService("Lighting")
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+setclipboard("https://discord.gg/BuCZqwc2Ux")
 
 local Window = Rayfield:CreateWindow({
 	Name = "Mite Hub",
@@ -25,7 +26,7 @@ local Window = Rayfield:CreateWindow({
 	KeySettings = {
 		Title = "Mite Hub",
 		Subtitle = "Key System",
-		Note = "Join the discord (discord.gg/sirius)",
+		Note = "Get Key On Discord Server (Discord Link Copied)",
 		FileName = "MiteKey",
 		SaveKey = true,
 		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
