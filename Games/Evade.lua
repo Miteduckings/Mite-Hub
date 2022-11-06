@@ -545,6 +545,8 @@ local Button = T3:CreateButton({
 	end,
 })
 
+local Paragraph = T3:CreateParagraph({Title = "NOTE", Content = "Visuals Currently Down, We Will Fix It Soon."})
+
 local Button = T4:CreateButton({
 	Name = "Main Game",
 	Callback = function()
