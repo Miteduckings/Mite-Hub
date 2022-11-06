@@ -29,11 +29,10 @@ local Window = Rayfield:CreateWindow({
 		FileName = "MiteKey",
 		SaveKey = true,
 		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-		Key = "Hello"
+		Key = "JeysenHuwuw"
 	}
 })
 
-getgenv().Fakemoney = false
 getgenv().revivedie = false
 getgenv().autowistle = false
 getgenv().autochat = false
@@ -145,15 +144,6 @@ end)
 
 task.spawn(function()
     while task.wait(1) do
-       if Fakemoney == true then
-        local ohString1 = "Free money <font color=\"rgb(100,255,100)\">($99999)</font>"
-        game:GetService("Players").LocalPlayer.PlayerGui.HUD.Messages.Use:Fire(ohString1)
-       end 
-    end
-end)
-
-task.spawn(function()
-    while task.wait(1) do
         if autochat == true then
             local ohString1 = "Hydra Network on top"
             local ohString2 = "All"
@@ -164,11 +154,9 @@ end)
 
 local T1 = Window:CreateTab("Main")
 local T2 = Window:CreateTab("Misc")
-local T3 = Window:CreateTab("Esp")
-local T4 = Window:CreateTab("Tp")
-local T5 = Window:CreateTab("Fun")
-local T6 = Window:CreateTab("Farms")
-local T7 = Window:CreateTab("Credits")
+local T3 = Window:CreateTab("Visuals")
+local T4 = Window:CreateTab("Teleport")
+local T5 = Window:CreateTab("Character")
 
 local Label = T1:CreateLabel("Default")
 
@@ -182,7 +170,7 @@ local Toggle = T1:CreateToggle({
 })
 
 local Toggle = T1:CreateToggle({
-	Name = "Money farm",
+	Name = "Money Farm",
 	CurrentValue = false,
 	Flag = "Toggle1", 
 	Callback = function(Value)
@@ -203,7 +191,7 @@ local Toggle = T1:CreateToggle({
 
 local Label = T2:CreateLabel("Toggle")
 
-local Toggle = T1:CreateToggle({
+local Toggle = T2:CreateToggle({
 	Name = "Auto Respawn",
 	CurrentValue = false,
 	Flag = "Toggle1",
@@ -242,26 +230,6 @@ local Toggle = T2:CreateToggle({
 local Label = T2:CreateLabel("Button")
 
 local Button = T2:CreateButton({
-	Name = "Third person",
-	Callback = function()
-        local ohString1 = "ThirdPerson"
-        local ohBoolean2 = true
-        game:GetService("Players").LocalPlayer.PlayerScripts.Events.KeybindUsed:Fire(ohString1, ohBoolean2)
-	end,
-})
-
-
-local Keybind = T2:CreateKeybind({
-	Name = "Respawn",
-	CurrentKeybind = "R",
-	HoldToInteract = false,
-	Flag = "Keybind1",
-	Callback = function(Keybind)
-        game:GetService("ReplicatedStorage").Events.Respawn:FireServer()
-	end,
-})
-
-local Button = T2:CreateButton({
 	Name = "Fullbright",
 	Callback = function()
         Light.Ambient = Color3.new(1, 1, 1)
@@ -272,79 +240,6 @@ local Button = T2:CreateButton({
         game.Lighting.ClockTime = 14
         game.Lighting.Brightness = 2
         game.Lighting.GlobalShadows = false
-	end,
-})
-
-
-local TargetWalkspeed
-local Slider = T6:CreateSlider({
-	Name = "WalkSpeed Slider",
-	Range = {0, 250},
-	Increment = 1,
-	Suffix = "WalkSpeed",
-	CurrentValue = 0,
-	Flag = "Slider1",
-	Callback = function(Value)
-        TargetWalkspeed = Value
-	end,
-})
-
-local Slider = T6:CreateSlider({
-	Name = "HipHeight Slider",
-	Range = {-1.40, 250},
-	Increment = 1,
-	Suffix = "HipHeight",
-	CurrentValue = -1.40,
-	Flag = "Slider1",
-	Callback = function(HipValue)
-        game.Players.LocalPlayer.Character.Humanoid.HipHeight = HipValue
-	end,
-})
-
-local Slider = T6:CreateSlider({
-	Name = "Fov Slider",
-	Range = {0, 120},
-	Increment = 1,
-	Suffix = "Fov",
-	CurrentValue = 70,
-	Flag = "Slider1",
-	Callback = function(FovValue)
-        local ohString1 = "FieldOfView"
-        local ohNumber2 = FovValue
-        game:GetService("ReplicatedStorage").Events.UpdateSetting:FireServer(ohString1, ohNumber2)
-	end,
-})
-
-local Slider = T6:CreateSlider({
-	Name = "JumpPower Slider",
-	Range = {0, 120},
-	Increment = 1,
-	Suffix = "JumpPower",
-	CurrentValue = 3,
-	Flag = "Slider1",
-	Callback = function(JumpValue)
-        Settings.Jump = JumpValue
-	end,
-})
-
-local Slider = T6:CreateSlider({
-	Name = "Time Slider",
-	Range = {0, 24},
-	Increment = 0.1,
-	Suffix = "Time",
-	CurrentValue = 14,
-	Flag = "Slider1",
-	Callback = function(TimeValue)
-        game.Lighting.ClockTime = TimeValue
-	end,
-})
-
-local Toggle = T5:CreateToggle({
-	Name = "Give fake money",
-	CurrentValue = false,
-	Flag = "Toggle1",
-	Callback = function(Value)
-        Fakemoney = Value
 	end,
 })
 
@@ -408,6 +303,144 @@ local Button = T2:CreateButton({
         local chatFrame = player.PlayerGui.Chat.Frame
         chatFrame.ChatChannelParentFrame.Visible = true
         chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
+	end,
+})
+
+local Button = T2:CreateButton({
+	Name = "Low Quality",
+	Callback = function()
+        local ohString1 = "LowQuality"
+        local ohBoolean2 = true
+        game:GetService("ReplicatedStorage").Events.UpdateSetting:FireServer(ohString1, ohBoolean2)
+	end,
+})
+
+local Label = T2:CreateLabel("Keybind")
+
+local Keybind = T2:CreateKeybind({
+	Name = "Respawn",
+	CurrentKeybind = "R",
+	HoldToInteract = false,
+	Flag = "Keybind1",
+	Callback = function(Keybind)
+        game:GetService("ReplicatedStorage").Events.Respawn:FireServer()
+	end,
+})
+
+local Keybind = T2:CreateKeybind({
+	Name = "Rejoin Server",
+	CurrentKeybind = "P",
+	HoldToInteract = false,
+	Flag = "Keybind1",
+	Callback = function(Keybind)
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+        ts:Teleport(game.PlaceId, p)
+	end,
+})
+
+local Keybind = T2:CreateKeybind({
+	Name = "Drink Cola",
+	CurrentKeybind = "H",
+	HoldToInteract = false,
+	Flag = "Keybind1",
+	Callback = function(Keybind)
+		local ohString1 = "Cola"
+		game:GetService("ReplicatedStorage").Events.UseUsable:FireServer(ohString1)
+	end,
+})
+
+local Keybind = T2:CreateKeybind({
+	Name = "Teleport",
+	CurrentKeybind = "X",
+	HoldToInteract = false,
+	Flag = "Keybind1",
+	Callback = function(Keybind)
+       plr = game.Players.LocalPlayer 
+        hum = plr.Character.HumanoidRootPart 
+        mouse = plr:GetMouse()
+        mouse.KeyDown:connect(function(key)
+            if key == "x" then
+            if mouse.Target then
+                hum.CFrame = CFrame.new(mouse.Hit.x, mouse.Hit.y + 5, mouse.Hit.z)
+                end
+            end
+        end)
+	end,
+})
+
+local Button = T5:CreateButton({
+	Name = "Infinite Jump",
+	Callback = function()
+        local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            if InfiniteJumpEnabled then
+                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end
+        end)
+	end,
+})
+
+local TargetWalkspeed
+local Slider = T5:CreateSlider({
+	Name = "WalkSpeed Slider",
+	Range = {0, 250},
+	Increment = 1,
+	Suffix = "WalkSpeed",
+	CurrentValue = 0,
+	Flag = "Slider1",
+	Callback = function(Value)
+        TargetWalkspeed = Value
+	end,
+})
+
+local Slider = T5:CreateSlider({
+	Name = "HipHeight Slider",
+	Range = {-1.40, 250},
+	Increment = 1,
+	Suffix = "HipHeight",
+	CurrentValue = -1.40,
+	Flag = "Slider1",
+	Callback = function(HipValue)
+        game.Players.LocalPlayer.Character.Humanoid.HipHeight = HipValue
+	end,
+})
+
+local Slider = T5:CreateSlider({
+	Name = "Fov Slider",
+	Range = {0, 120},
+	Increment = 1,
+	Suffix = "Fov",
+	CurrentValue = 70,
+	Flag = "Slider1",
+	Callback = function(FovValue)
+        local ohString1 = "FieldOfView"
+        local ohNumber2 = FovValue
+        game:GetService("ReplicatedStorage").Events.UpdateSetting:FireServer(ohString1, ohNumber2)
+	end,
+})
+
+local Slider = T5:CreateSlider({
+	Name = "JumpPower Slider",
+	Range = {0, 120},
+	Increment = 1,
+	Suffix = "JumpPower",
+	CurrentValue = 3,
+	Flag = "Slider1",
+	Callback = function(JumpValue)
+        Settings.Jump = JumpValue
+	end,
+})
+
+local Slider = T5:CreateSlider({
+	Name = "Time Slider",
+	Range = {0, 24},
+	Increment = 0.1,
+	Suffix = "Time",
+	CurrentValue = 14,
+	Flag = "Slider1",
+	Callback = function(TimeValue)
+        game.Lighting.ClockTime = TimeValue
 	end,
 })
 
@@ -501,35 +534,6 @@ local Button = T3:CreateButton({
 	end,
 })
 
-local Button = T2:CreateButton({
-	Name = "Inf Jump",
-	Callback = function()
-        local InfiniteJumpEnabled = true
-        game:GetService("UserInputService").JumpRequest:connect(function()
-            if InfiniteJumpEnabled then
-                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-            end
-        end)
-	end,
-})
-
-
-local Button = T2:CreateButton({
-	Name = "T to teleport",
-	Callback = function()
-        plr = game.Players.LocalPlayer 
-        hum = plr.Character.HumanoidRootPart 
-        mouse = plr:GetMouse()
-        mouse.KeyDown:connect(function(key)
-            if key == "c" then
-            if mouse.Target then
-                hum.CFrame = CFrame.new(mouse.Hit.x, mouse.Hit.y + 5, mouse.Hit.z)
-                end
-            end
-        end)
-	end,
-})
-
 local Button = T3:CreateButton({
 	Name = "Ticket Esp",
 	Callback = function()
@@ -541,60 +545,23 @@ local Button = T3:CreateButton({
 	end,
 })
 
-local Button = T2:CreateButton({
-	Name = "Test Emote (Permanant)",
-	Callback = function()
-        game:GetService("ReplicatedStorage").Events.UI.Purchase:InvokeServer("Emotes", "Test")
-	end,
-})
-
-local Keybind = T2:CreateKeybind({
-	Name = "Rejoin Server",
-	CurrentKeybind = "P",
-	HoldToInteract = false,
-	Flag = "Keybind1",
-	Callback = function(Keybind)
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
-        ts:Teleport(game.PlaceId, p)
-	end,
-})
-
-local Keybind = T2:CreateKeybind({
-	Name = "Drink Cola",
-	CurrentKeybind = "H",
-	HoldToInteract = false,
-	Flag = "Keybind1",
-	Callback = function(Keybind)
-		local ohString1 = "Cola"
-		game:GetService("ReplicatedStorage").Events.UseUsable:FireServer(ohString1)
-	end,
-})
-
-local Button = T2:CreateButton({
-	Name = "Low Quality",
-	Callback = function()
-        local ohString1 = "LowQuality"
-        local ohBoolean2 = true
-        game:GetService("ReplicatedStorage").Events.UpdateSetting:FireServer(ohString1, ohBoolean2)
-	end,
-})
-
-local Button = T5:CreateButton({
-	Name = "Free Cam (shift + P)",
-	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Robobo2022/script/main/Freecam.lua"))()
-	end,
-})
-
 local Button = T4:CreateButton({
-	Name = "Main game",
+	Name = "Main Game",
 	Callback = function()
         local TeleportService = game:GetService('TeleportService')
         GameId = 9872472334
         TeleportService:Teleport(GameId, game.Players.LocalPlayer)
 	end,
 })
+
+local Button = T4:CreateButton({
+	Name = "Social Space",
+	Callback = function()
+        local TeleportService = game:GetService('TeleportService')
+        GameId = 10324347967
+        TeleportService:Teleport(GameId, game.Players.LocalPlayer)
+	end,
+}) 
 
 local Button = T4:CreateButton({
 	Name = "Casual",
@@ -606,16 +573,7 @@ local Button = T4:CreateButton({
 })
 
 local Button = T4:CreateButton({
-	Name = "Social space",
-	Callback = function()
-        local TeleportService = game:GetService('TeleportService')
-        GameId = 10324347967
-        TeleportService:Teleport(GameId, game.Players.LocalPlayer)
-	end,
-})
-
-local Button = T4:CreateButton({
-	Name = "Big team",
+	Name = "Big Team",
 	Callback = function()
         local TeleportService = game:GetService('TeleportService')
         GameId = 10324346056
@@ -624,7 +582,7 @@ local Button = T4:CreateButton({
 })
 
 local Button = T4:CreateButton({
-	Name = "Team deathmatch",
+	Name = "Team Deathmatch",
 	Callback = function()
         local TeleportService = game:GetService('TeleportService')
         GameId = 110539706691
@@ -633,7 +591,16 @@ local Button = T4:CreateButton({
 })
 
 local Button = T4:CreateButton({
-	Name = "Vc only",
+	Name = "Infection",
+	Callback = function()
+        local TeleportService = game:GetService('TeleportService')
+        GameId = 11353532384
+        TeleportService:Teleport(GameId, game.Players.LocalPlayer)
+	end,
+}) 
+
+local Button = T4:CreateButton({
+	Name = "VoiceChat Only",
 	Callback = function()
         local TeleportService = game:GetService('TeleportService')
         GameId = 10808838353
@@ -649,52 +616,6 @@ local Button = T4:CreateButton({
         TeleportService:Teleport(GameId, game.Players.LocalPlayer)
 	end,
 })
-
-local Button = T4:CreateButton({
-	Name = "Infection",
-	Callback = function()
-        local TeleportService = game:GetService('TeleportService')
-        GameId = 11353532384
-        TeleportService:Teleport(GameId, game.Players.LocalPlayer)
-	end,
-})
-
-local Button = T5:CreateButton({
-	Name = "Spawm chat",
-	Callback = function(Value)
-        autochat = Value
-	end,
-})
-
-
-local Keybind = T5:CreateKeybind({
-	Name = "Random emote",
-	CurrentKeybind = "Z",
-	HoldToInteract = false,
-	Flag = "Keybind1",
-	Callback = function(Keybind)
-        local number = math.random(4)
-        local ohString1 = (number)
-        game:GetService("ReplicatedStorage").Events.Emote:FireServer(ohString1)
-	end,
-})
-
-local Keybind = T5:CreateKeybind({
-	Name = "Random Vote",
-	CurrentKeybind = "X",
-	HoldToInteract = false,
-	Flag = "Keybind1",
-	Callback = function(Keybind)
-        local RandomVote = math.random(4)
-        local ohNumber1 = (RandomVote)
-        game:GetService("ReplicatedStorage").Events.Vote:FireServer(ohNumber1)
-	end,
-})
-
-local Paragraph = T7:CreateParagraph({Title = "Owner/Main Dev", Content = "hydra#8270"})
-local Paragraph = T7:CreateParagraph({Title = "Credits", Content = "FeIix and ss.spooky.ss"})
-local Paragraph = T7:CreateParagraph({Title = "Credits", Content = "xCLY And batusd"})
-local Paragraph = T7:CreateParagraph({Title = "Credits", Content = "Truncated Cuboctahedron"})
 
 game:GetService("RunService").RenderStepped:Connect(function()
     pcall(function()
