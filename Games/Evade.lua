@@ -21,16 +21,6 @@ local Window = Rayfield:CreateWindow({
         	Enabled = false,
         	Invite = "BuCZqwc2Ux", 
         	RememberJoins = false 
-        },
-	KeySystem = false, 
-	KeySettings = {
-		Title = "Mite Hub",
-		Subtitle = "Key System",
-		Note = "Get Key On Discord Server (Discord Link Copied)",
-		FileName = "MiteKey",
-		SaveKey = true,
-		GrabKeyFromSite = false, 
-		Key = "JeysenHuwuw"
 	}
 })
 
