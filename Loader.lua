@@ -7,6 +7,7 @@ local Games = {
         [10808838353] = "Evade.lua";
         [11353528705] = "Evade.lua";
         [11353532384] = "Evade.lua";
+        [6839171747] = "Doors.lua";
 }
 
 local Supported = Games[game.PlaceId] or false
