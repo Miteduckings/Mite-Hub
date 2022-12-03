@@ -1,3 +1,7 @@
+
+return function()
+	local Global = getgenv and getgenv() or _G
+  
 _, Protected_by_MoonSecV2, Discord = 'discord.gg/gQEH2uZxUk'
 
 
