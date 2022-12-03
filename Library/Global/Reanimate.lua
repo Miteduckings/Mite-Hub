@@ -88,7 +88,7 @@ local RunService = game:GetService("RunService")
 		end
 	end
 
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Miteduckings/Mite-Hub/main/Library/NekoV1/Global/NewReanimate.lua",true))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Miteduckings/Mite-Hub/main/Library/Global/NewReanimate.lua",true))()
 
 	do 
 		if Global.Reanimation == "Simple" and Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then 
